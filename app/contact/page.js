@@ -21,9 +21,9 @@ export default function ContactPage() {
         </form>
         <div className="mt-16">
           <h2 className="text-2xl font-medium mb-2">Studio Ganda</h2>
-          <p>Jl. Arsitektur No. 10, Jakarta, Indonesia</p>
+          <p></p>
           <p className="mt-2">Email: hello@studioganda.co</p>
-          <p>Phone: +62 812-3456-7890</p>
+          <p>Phone: </p>
           <div className="mt-6">
             <iframe
               src="https://www.google.com/maps/embed?..."

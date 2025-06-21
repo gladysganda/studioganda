@@ -5,8 +5,8 @@ export default function AboutPage() {
     <main className="px-6 md:px-20 py-20 max-w-5xl mx-auto text-neutral-800">
       <h1 className="text-4xl font-light mb-12">About</h1>
       <div className="mb-12 space-y-4">
-        <p>Studio Ganda is an architectural practice based in Jakarta. We create spaces rooted in climate, culture, and craft. Every project is a search for balance — between light and shadow, interior and exterior, form and material.</p>
-        <p>Founded in 2025 by Annie Ganda, our work ranges from private homes to cultural and commercial buildings.</p>
+        <p>Studio Ganda is an architectural practice based in Medan. We create spaces rooted in climate, culture, and craft. Every project is a search for balance — between light and shadow, interior and exterior, form and material.</p>
+        <p>Founded in 2025 by Gilbert Ganda, our work ranges from private homes to cultural and commercial buildings.</p>
       </div>
       <Image src="/studio.jpg" alt="Studio Portrait" width={1600} height={900} className="rounded-xl mb-12" />
       <div>
