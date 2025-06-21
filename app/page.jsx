@@ -4,17 +4,17 @@ export default function Home() {
   const projects = [
     {
       title: 'Project One',
-      image: '/project1.jpg',
+      image: '/images/project1.jpg',
       href: '/project-one',
     },
     {
       title: 'Project Two',
-      image: '/project2.jpg',
+      image: '/images/project2.jpg',
       href: '/project-two',
     },
     {
       title: 'Project Three',
-      image: '/project3.jpg',
+      image: '/images/project3.jpg',
       href: '/project-three',
     },
   ];
