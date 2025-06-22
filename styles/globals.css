@@ -45,3 +45,9 @@ html {
 html, body {
   font-family: 'General Sans', sans-serif;
 }
+
+img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
