@@ -13,27 +13,38 @@ export default function Navbar() {
   const handleClose = () => setIsOpen(false);
 
   useEffect(() => {
-    setHidden(false);
-    setLastScrollY(0);
-  }, [pathname]);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const handleScroll = () => {
-      const currentScroll = window.scrollY;
-
-      if (currentScroll > lastScrollY) {
-        setHidden(true); // scrolling down
-      } else {
-        setHidden(false); // scrolling up
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+  
+    const updateScroll = () => {
+      const currentScrollY = window.scrollY;
+  
+      if (Math.abs(currentScrollY - lastScrollY) < 10) {
+        ticking = false;
+        return; // Don't do anything if the scroll is too small
       }
-      setLastScrollY(currentScroll);
+  
+      if (currentScrollY > lastScrollY) {
+        setHidden(true); // Scrolling down
+      } else {
+        setHidden(false); // Scrolling up
+      }
+  
+      lastScrollY = currentScrollY;
+      ticking = false;
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScroll);
+        ticking = true;
+      }
+    };
+  
+    window.addEventListener("scroll", onScroll);
+  
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);  
 
   return (
     <>
@@ -52,27 +63,27 @@ export default function Navbar() {
 
         {/* Hamburger Menu button */}
         <div className="fixed top-6 right-6 z-50">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="flex flex-col justify-between w-6 h-5 group"
-            aria-label="Toggle menu"
-          >
-            <span
-              className={`h-0.5 w-full bg-black transition-all duration-300 ${
-                isOpen ? "rotate-45 translate-y-2" : ""
-              }`}
-            />
-            <span
-              className={`h-0.5 w-full bg-black transition-all duration-300 ${
-                isOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`h-0.5 w-full bg-black transition-all duration-300 ${
-                isOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
-            />
-          </button>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative w-6 h-6 flex items-center justify-center z-50 group"
+          aria-label="Toggle menu"
+        >
+          <span
+            className={`absolute w-6 h-0.5 bg-black transition-all duration-300 ${
+              isOpen ? "rotate-45 translate-y-0" : "-translate-y-2"
+            }`}
+          />
+          <span
+            className={`absolute w-6 h-0.5 bg-black transition-all duration-300 ${
+              isOpen ? "opacity-0" : "opacity-100"
+            }`}
+          />
+          <span
+            className={`absolute w-6 h-0.5 bg-black transition-all duration-300 ${
+              isOpen ? "-rotate-45 translate-y-0" : "translate-y-2"
+            }`}
+          />
+        </button>
         </div>
       </header>
 
