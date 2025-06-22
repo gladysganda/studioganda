@@ -18,7 +18,7 @@ export default function ProjectCard({ title, image, href }) {
           height={800}
           className="object-cover w-full h-80 transition-transform duration-300 group-hover:scale-105"
         />
-        <div className="absolute bottom-4 left-4 text-white text-xl font-light bg-black/50 px-4 py-2 rounded">
+        <div className="absolute bottom-4 left-4 text-white text-xl font-light px-4 py-2 rounded">
           {title}
         </div>
       </motion.div>
