@@ -22,6 +22,21 @@ function HeroSlider() {
       title: 'Project Three',
       link: '/project-three',
     },
+    {
+      image: '/images/project4.jpg',
+      title: 'Project Four',
+      link: '/project-four',
+    },
+    {
+      image: '/images/project5.jpg',
+      title: 'Project Five',
+      link: '/project-five',
+    },
+    {
+      image: '/images/project6.jpg',
+      title: 'Project Six',
+      link: '/project-six',
+    },
   ];
 
   const [index, setIndex] = useState(0);
@@ -75,6 +90,21 @@ export default function Home() {
       image: '/images/project3.jpg',
       href: '/project-three',
     },
+    {
+      title: 'Project Four',
+      image: '/images/project4.jpg',
+      href: '/project-four',
+    },
+    {
+      title: 'Project Five',
+      image: '/images/project5.jpg',
+      href: '/project-five',
+    },
+    {
+      title: 'Project Six',
+      image: '/images/project6.jpg',
+      href: '/project-six',
+    },
   ];
 
   return (
@@ -96,7 +126,7 @@ export default function Home() {
     </section>
 
     {/* Projects Preview Section */}
-    <section id="projects" className="py-32 px-6 md:px-20 bg-neutral-100">
+    <section id="projects" className="py-14 px-6 md:px-20 bg-neutral-100">
       <h2 className="text-4xl font-light mb-12">Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {projects.map((p, idx) => (
@@ -109,8 +139,8 @@ export default function Home() {
     </section>
 
     {/* Contact Preview Section */}
-    <section id="contact" className="py-32 px-6 md:px-20 bg-white">
-      <h2 className="text-4xl font-light mb-6">Contact</h2>
+    <section id="contact" className="py-14 px-6 md:px-20 bg-white">
+      <h2 className="text-4xl font-light mb-12">Contact</h2>
       <p className="max-w-xl">
         Interested in working together or just want to say hello?
       </p>

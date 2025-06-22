@@ -2,22 +2,33 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const pathname = usePathname();
 
   const handleClose = () => setIsOpen(false);
 
   useEffect(() => {
+    setHidden(false);
+    setLastScrollY(0);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
+      const currentScroll = window.scrollY;
+
+      if (currentScroll > lastScrollY) {
         setHidden(true); // scrolling down
       } else {
         setHidden(false); // scrolling up
       }
-      setLastScrollY(window.scrollY);
+      setLastScrollY(currentScroll);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -74,7 +85,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-neutral-100 flex flex-col items-center justify-evenly px-4 py-12 sm:py-20"
+            className="fixed text-black inset-0 z-40 bg-neutral-100 flex flex-col items-center justify-evenly px-4 py-12 sm:py-20"
           >
             <nav className="flex flex-col gap-12 text-center">
               <Link href="/about" onClick={handleClose}>
